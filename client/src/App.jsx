@@ -1,14 +1,25 @@
-import "./App.css";
-import StreamerList from "./components/StreamerList";
-import SubmissionForm from "./components/SubmissionForm";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import StreamerInfo from "./pages/StreamerInfo";
+import "./styles/main.scss";
 
-function App() {
-  return (
-    <div>
-      <SubmissionForm />
-      <StreamerList />
-    </div>
-  );
-}
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Home />}>
+      <Route path=":streamerId" element={<StreamerInfo />} />
+    </Route>
+  )
+);
 
-export default App;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

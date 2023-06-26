@@ -1,12 +1,14 @@
 import StreamerList from "../components/StreamerList";
 import SubmissionForm from "../components/SubmissionForm";
+import Layout from "../styles/Layout.styled";
 
 const Home = () => {
   return (
-    <div>
+    <Layout.HomeScreenBox>
       <SubmissionForm />
       <StreamerList />
-    </div>
+    </Layout.HomeScreenBox>
   );
 };
+
 export default Home;

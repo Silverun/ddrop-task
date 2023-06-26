@@ -8,18 +8,25 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import StreamerInfo from "./pages/StreamerInfo";
-import "./styles/main.scss";
+import Layout from "./components/Layout/Layout";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/Theme";
+import { GlobalStyles } from "./styles/Global";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Home />}>
-      <Route path=":streamerId" element={<StreamerInfo />} />
+    <Route element={<Layout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/streamer/:streamerId" element={<StreamerInfo />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );

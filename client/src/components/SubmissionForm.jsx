@@ -1,4 +1,6 @@
+import Layout from "../styles/Layout.styled";
+
 const SubmissionForm = () => {
-  return <div>SubmissionForm</div>;
+  return <Layout.Box>SubmissionForm</Layout.Box>;
 };
 export default SubmissionForm;

@@ -1,7 +1,7 @@
-import Layout from "../styles/Layout.styled";
-import BarLoader from "react-spinners/BarLoader";
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
+import LayoutStyle from "../styles/Layout.styled";
+import BarLoaderStyled from "../styles/components/BarLoader.styled";
 
 const StreamerList = () => {
   const { data: streamers, isLoading } = useSWR("streamers");
@@ -11,10 +11,10 @@ const StreamerList = () => {
     navigate(`/streamer/${id}`);
   };
 
-  if (isLoading) return <BarLoader />;
+  if (isLoading) return <BarLoaderStyled />;
 
   return (
-    <Layout.Box>
+    <LayoutStyle.Box>
       <ul>
         {streamers.map((streamer) => (
           <li
@@ -27,7 +27,7 @@ const StreamerList = () => {
           </li>
         ))}
       </ul>
-    </Layout.Box>
+    </LayoutStyle.Box>
   );
 };
 export default StreamerList;

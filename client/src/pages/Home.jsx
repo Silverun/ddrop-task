@@ -1,13 +1,13 @@
 import StreamerList from "../components/StreamerList";
 import SubmissionForm from "../components/SubmissionForm";
-import Layout from "../styles/Layout.styled";
+import HomeStyle from "../styles/pages/Home.styled";
 
 const Home = () => {
   return (
-    <Layout.HomeScreenBox>
+    <HomeStyle.Box>
       <SubmissionForm />
       <StreamerList />
-    </Layout.HomeScreenBox>
+    </HomeStyle.Box>
   );
 };
 

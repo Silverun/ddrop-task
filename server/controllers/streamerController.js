@@ -1,13 +1,18 @@
 const prisma = require("../prisma/index");
 
 const getStreamer = async (req, res) => {
-  const streamer = await prisma.streamer.findUnique({
-    where: {
-      id: "6496de33ec63755815585f2b",
-    },
-  });
+  const { streamerId } = req.params;
 
-  res.send(streamer);
+  try {
+    const streamer = await prisma.streamer.findUnique({
+      where: {
+        id: streamerId,
+      },
+    });
+    res.status(200).send(streamer);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
 
 module.exports = {

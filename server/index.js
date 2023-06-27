@@ -20,16 +20,6 @@ app.use(express.json());
 app.use("/streamers", streamersRoute);
 app.use("/streamer", streamerRoute);
 
-// main()
-//   .then(async () => {
-//     await prisma.$disconnect();
-//   })
-//   .catch(async (e) => {
-//     console.error(e);
-//     await prisma.$disconnect();
-//     process.exit(1);
-//   });
-
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });

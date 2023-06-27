@@ -1,6 +1,6 @@
 import { useSWRConfig } from "swr";
 import axiosCustom from "../libs/axios";
-import Layout from "../styles/Layout.styled";
+import LayoutStyle from "../styles/Layout.styled";
 
 const SubmissionForm = () => {
   const { mutate } = useSWRConfig();
@@ -13,13 +13,14 @@ const SubmissionForm = () => {
     try {
       await axiosCustom.post("streamers", formJson);
       mutate("streamers");
+      e.target.reset();
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <Layout.Box>
+    <LayoutStyle.Box>
       <form action="post" onSubmit={submitStreamerHandler}>
         <h3>Add New Streamer</h3>
         <div>
@@ -47,7 +48,7 @@ const SubmissionForm = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
-    </Layout.Box>
+    </LayoutStyle.Box>
   );
 };
 export default SubmissionForm;

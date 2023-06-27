@@ -9,19 +9,22 @@ const Box = styled.div`
   padding: 1rem;
 `;
 
-const HomeScreenBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 2rem;
-  width: 80%;
-  height: 80%;
+const Header = styled.header`
   margin: 2rem auto;
+  width: 80%;
+  font-size: 1.5rem;
+  a {
+    text-decoration: none;
+    &:hover {
+      opacity: 50%;
+    }
+    transition: all 1s ease-out 0s;
+  }
 `;
 
-const Layout = {
+const LayoutStyle = {
   Box,
-  HomeScreenBox,
+  Header,
 };
 
-export default Layout;
+export default LayoutStyle;

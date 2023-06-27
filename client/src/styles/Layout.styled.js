@@ -12,7 +12,8 @@ const Box = styled.div`
 const HomeScreenBox = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  align-items: center;
+  row-gap: 2rem;
   width: 80%;
   height: 80%;
   margin: 2rem auto;

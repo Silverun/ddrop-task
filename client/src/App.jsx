@@ -12,6 +12,8 @@ import Layout from "./components/Layout/Layout";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/Theme";
 import { GlobalStyles } from "./styles/Global";
+import { SWRConfig } from "swr";
+import { options } from "./libs/swr";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,9 +26,11 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <SWRConfig value={options}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </SWRConfig>
   </React.StrictMode>
 );

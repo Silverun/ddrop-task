@@ -1,9 +1,10 @@
 const express = require("express");
-const app = express();
 const streamersRoute = require("./routes/streamersRoute");
 const streamerRoute = require("./routes/streamerRoute");
 require("dotenv").config();
 const cors = require("cors");
+
+const app = express();
 
 const port = process.env.PORT;
 
@@ -13,6 +14,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(express.json());
 
 app.use("/streamers", streamersRoute);
 app.use("/streamer", streamerRoute);

@@ -10,6 +10,7 @@ ${fonts}
 box-sizing: border-box;
 }
 
+
 body {
     font-family: ${({ theme }) => theme.fonts.roboto}, sans-serif;
     font-size: 1rem;

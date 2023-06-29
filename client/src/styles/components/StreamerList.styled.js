@@ -13,12 +13,11 @@ const ListItem = styled.li`
   padding: 0 15px;
   align-items: center;
   column-gap: 5px;
+  transition: all 250ms;
+  font-size: 1.2rem;
+
   &:hover {
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  :last-child {
-    justify-self: end;
   }
 `;
 

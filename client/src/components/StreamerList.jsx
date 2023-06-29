@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
-import LayoutStyle from "../styles/Layout.styled";
 import BarLoaderStyled from "../styles/components/BarLoader.styled";
 import StreamerListStyle from "../styles/components/StreamerList.styled";
 import Platform from "./Platform";
+import Votes from "./Votes/Votes";
+import { useEffect } from "react";
 
 const StreamerList = () => {
   const { data: streamers, isLoading } = useSWR("streamers");
@@ -27,9 +28,7 @@ const StreamerList = () => {
           <p>{streamer.name}</p>
 
           <div>{streamer.description}</div>
-          <div>
-            {streamer.upvotes} - {streamer.downvotes}
-          </div>
+          <Votes id={streamer.id} votes={streamer.votes} />
         </StreamerListStyle.ListItem>
       ))}
     </StreamerListStyle.List>

@@ -6,6 +6,7 @@ router.get("/", streamersController.getAllStreamers);
 
 router.post("/", streamersController.addStreamer);
 
-router.put("/:streamerId/vote", streamersController.changeRating);
+router.put("/:streamerId/upvote", streamersController.upVote);
+router.put("/:streamerId/downvote", streamersController.downVote);
 
 module.exports = router;

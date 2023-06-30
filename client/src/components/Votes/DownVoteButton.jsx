@@ -13,7 +13,6 @@ function DownVoteButton(props) {
       fill={props.downvoted ? "red" : "currentColor"}
       height="1.3em"
       width="1.3em"
-      {...props}
     >
       <path d={props.downvoted ? downvotedPath : defaultPath} />
     </VotesStyle.SvgDown>

@@ -21,5 +21,5 @@ app.use("/streamers", streamersRoute);
 app.use("/streamer", streamerRoute);
 
 app.listen(port, () => {
-  console.log(`Server running on ${port}`);
+  console.log(`Server running on port: ${port}`);
 });

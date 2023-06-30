@@ -11,7 +11,11 @@ const Form = styled.form`
     margin-bottom: 10px;
   }
 
-  label {
+  textarea,
+  select,
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
   }
 `;
 

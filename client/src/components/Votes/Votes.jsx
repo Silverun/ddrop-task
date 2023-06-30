@@ -6,6 +6,7 @@ import UpVoteButton from "./UpVoteButton";
 import { useState } from "react";
 import useUpvoted from "../../hooks/useUpvoted";
 import useDownvoted from "../../hooks/useDownvoted";
+import { toast } from "react-hot-toast";
 
 const Votes = ({ id, votes }) => {
   const { alreadyUpvoted, addToUpStorage, removeFromUpStorage } =
@@ -36,7 +37,7 @@ const Votes = ({ id, votes }) => {
       addToUpStorage();
       setUpvoted(true);
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
   const downVoteClickHandler = async (e) => {
@@ -59,7 +60,7 @@ const Votes = ({ id, votes }) => {
       addToDownStorage();
       setDownvoted(true);
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 

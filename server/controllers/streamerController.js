@@ -11,7 +11,9 @@ const getStreamer = async (req, res) => {
     });
     res.status(200).send(streamer);
   } catch (error) {
-    res.status(400).send(error);
+    res
+      .status(400)
+      .send({ error: error, message: "Could not find this streamer" });
   }
 };
 

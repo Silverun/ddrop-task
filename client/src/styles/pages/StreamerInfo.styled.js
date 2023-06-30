@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
+import { device } from "../Breakpoints";
 
 const Box = styled.div`
   display: grid;
-  grid-template-columns: 80% auto;
+  grid-template-columns: 3fr 1fr;
   gap: 1rem;
   width: 80%;
   height: 80%;
@@ -12,6 +13,11 @@ const Box = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  @media ${device.sm} {
+    display: flex;
+    flex-direction: column;
   }
 `;
 

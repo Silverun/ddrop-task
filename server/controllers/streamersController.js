@@ -5,7 +5,9 @@ const getAllStreamers = async (req, res) => {
     const allStreamers = await prisma.streamer.findMany();
     res.status(200).send(allStreamers);
   } catch (error) {
-    res.status(400).send(error);
+    res
+      .status(400)
+      .send({ error: error, message: "Could not retrieve streamer list" });
   }
 };
 
@@ -21,6 +23,12 @@ const addStreamer = async (req, res) => {
     });
     res.status(200).send("Streamer added successfully");
   } catch (error) {
+    if (error.meta.target === "Streamer_name_key") {
+      return res.status(400).send({
+        error: error,
+        message: "Streamer with this name already exists",
+      });
+    }
     res.status(400).send(error);
   }
 };
@@ -40,7 +48,7 @@ const upVote = async (req, res) => {
     });
     res.status(200).send("Upvoted successfully");
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ error: error, message: "Could not upvote" });
   }
 };
 
@@ -59,7 +67,7 @@ const downVote = async (req, res) => {
     });
     res.status(200).send("Downvoted successfully");
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ error: error, message: "Could not downvote" });
   }
 };
 

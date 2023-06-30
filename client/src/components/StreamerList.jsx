@@ -4,7 +4,6 @@ import BarLoaderStyled from "../styles/components/BarLoader.styled";
 import StreamerListStyle from "../styles/components/StreamerList.styled";
 import Platform from "./Platform";
 import Votes from "./Votes/Votes";
-import { useEffect } from "react";
 
 const StreamerList = () => {
   const { data: streamers, isLoading } = useSWR("streamers");
@@ -18,19 +17,29 @@ const StreamerList = () => {
 
   return (
     <StreamerListStyle.List>
-      {streamers.map((streamer) => (
-        <StreamerListStyle.ListItem
-          role="button"
-          onClick={() => streamerClickHandler(streamer.id)}
-          key={streamer.id}
-        >
-          <Platform small platform={streamer.platform} $small />
-          <p>{streamer.name}</p>
+      {streamers.map((streamer) => {
+        let description;
 
-          <div>{streamer.description}</div>
-          <Votes id={streamer.id} votes={streamer.votes} />
-        </StreamerListStyle.ListItem>
-      ))}
+        if (streamer.description.length > 50) {
+          description = streamer.description.slice(0, 51) + "...";
+        } else {
+          description = streamer.description;
+        }
+
+        return (
+          <StreamerListStyle.ListItem
+            role="button"
+            onClick={() => streamerClickHandler(streamer.id)}
+            key={streamer.id}
+          >
+            <Platform small platform={streamer.platform} $small />
+            <p>{streamer.name}</p>
+
+            <div>{description}</div>
+            <Votes id={streamer.id} votes={streamer.votes} />
+          </StreamerListStyle.ListItem>
+        );
+      })}
     </StreamerListStyle.List>
   );
 };

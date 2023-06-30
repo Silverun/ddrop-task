@@ -12,7 +12,6 @@ function UpVoteButton(props) {
       fill={props.upvoted ? "blue" : "currentColor"}
       height="1.3em"
       width="1.3em"
-      {...props}
     >
       <path d={props.upvoted ? upvotedPath : defaultPath} />
     </VotesStyle.SvgUp>

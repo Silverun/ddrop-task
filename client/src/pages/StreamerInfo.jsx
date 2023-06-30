@@ -7,8 +7,9 @@ import BarLoaderStyled from "../styles/components/BarLoader.styled";
 const StreamerInfo = () => {
   const { streamerId } = useParams();
 
-  const { data: streamer, isLoading } = useSWR(`streamer/${streamerId}`);
+  const { data: streamer, isLoading, error } = useSWR(`streamer/${streamerId}`);
 
+  if (error) return <div>{error.response.data.message}</div>;
   if (isLoading) return <BarLoaderStyled />;
 
   return (

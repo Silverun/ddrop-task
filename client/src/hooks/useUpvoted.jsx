@@ -2,11 +2,17 @@ const useUpvoted = (id) => {
   const upVotedIds = JSON.parse(localStorage.getItem("upvoted_ids")) || [];
   const alreadyUpvoted = upVotedIds.includes(id);
 
-  const addToStorage = () => {
-    const newUpVotedIds = [...upVotedIds, id];
+  const addToUpStorage = () => {
+    if (!alreadyUpvoted) {
+      const newUpVotedIds = [...upVotedIds, id];
+      localStorage.setItem("upvoted_ids", JSON.stringify(newUpVotedIds));
+    }
+  };
+  const removeFromUpStorage = () => {
+    const newUpVotedIds = upVotedIds.filter((upVotedId) => upVotedId !== id);
     localStorage.setItem("upvoted_ids", JSON.stringify(newUpVotedIds));
   };
 
-  return { alreadyUpvoted, addToStorage };
+  return { alreadyUpvoted, addToUpStorage, removeFromUpStorage };
 };
 export default useUpvoted;

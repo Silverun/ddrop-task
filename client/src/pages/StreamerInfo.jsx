@@ -3,14 +3,15 @@ import useSWR from "swr";
 import StreamerInfoStyle from "../styles/pages/StreamerInfo.styled";
 import Platform from "../components/Platform";
 import BarLoaderStyled from "../styles/components/BarLoader.styled";
+import Error from "../components/Error";
 
 const StreamerInfo = () => {
   const { streamerId } = useParams();
 
   const { data: streamer, isLoading, error } = useSWR(`streamer/${streamerId}`);
 
-  if (error) return <div>{error.response.data.message}</div>;
   if (isLoading) return <BarLoaderStyled />;
+  if (error) return <Error error={error} />;
 
   return (
     <StreamerInfoStyle.Box>

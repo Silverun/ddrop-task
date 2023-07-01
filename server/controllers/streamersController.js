@@ -7,7 +7,7 @@ const getAllStreamers = async (req, res) => {
   } catch (error) {
     res
       .status(400)
-      .send({ error: error, message: "Could not retrieve streamer list" });
+      .send({ error: error, message: "Could not retrieve streamers list" });
   }
 };
 

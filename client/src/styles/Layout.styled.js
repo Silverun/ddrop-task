@@ -4,7 +4,6 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 3px;
   padding: 1rem;
 `;
@@ -22,9 +21,15 @@ const Header = styled.header`
   }
 `;
 
+const Message = styled.p`
+  margin: 2rem auto;
+  font-size: 1.2rem;
+`;
+
 const LayoutStyle = {
   Box,
   Header,
+  Message,
 };
 
 export default LayoutStyle;

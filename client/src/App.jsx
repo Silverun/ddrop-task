@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="/streamer/:streamerId" element={<StreamerInfo />} />
+      <Route path="*" element={<Navigate to={"/"} />} />
     </Route>
   )
 );
